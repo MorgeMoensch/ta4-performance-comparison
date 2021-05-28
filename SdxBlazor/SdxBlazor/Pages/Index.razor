@@ -1,0 +1,47 @@
+﻿@page "/"
+@using System.Net
+@inject HttpClient Http
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<select title="TestSelect">
+    @if (Objects.Length > 0)
+    {
+        @foreach (var element in Objects)
+        {
+            <option value="@element.A">@element.A</option>
+        }
+    }
+
+</select>
+
+<SdxDropdown Data="Objects" Context="obj">
+    <Label>Testlabel</Label>
+    <Placeholder>Dropdown Placeholder</Placeholder>
+    <ItemTemplate>@obj.A</ItemTemplate>
+</SdxDropdown>
+
+@code
+{
+    public TestObject[] Objects = new TestObject[0];
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        Objects = await Http.GetFromJsonAsync<TestObject[]>("sample-data/test.json");
+        Console.WriteLine("Hooi");
+        Console.WriteLine(Objects);
+    }
+    
+    public class TestObject
+    {
+        public Guid Id { get; set; }
+        
+        public string A { get; set; }
+        
+        public string CreatedAt { get; set; }
+    }
+
+}

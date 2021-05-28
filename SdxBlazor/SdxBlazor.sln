@@ -1,0 +1,13 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SdxBlazor", "SdxBlazor\SdxBlazor.csproj", "{7483275A-4ADE-4CD7-AE9E-E72A92F12475}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AnyCPU|Any CPU = AnyCPU|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7483275A-4ADE-4CD7-AE9E-E72A92F12475}.AnyCPU|Any CPU.ActiveCfg = AnyCPU|Any CPU
+		{7483275A-4ADE-4CD7-AE9E-E72A92F12475}.AnyCPU|Any CPU.Build.0 = AnyCPU|Any CPU
+	EndGlobalSection
+EndGlobal
