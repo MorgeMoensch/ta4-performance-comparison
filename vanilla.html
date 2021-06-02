@@ -5,19 +5,25 @@
     <title>Vanilla - Performance Comparison</title>
 </head>
 <body>
-<select id="select" name="Choose :)">
+<button onclick="populateDOM()">PopulateDOM</button>
+<select id="select">
 </select>
 </body>
 <script>
-    let values;
     let select = document.getElementById('select');
-    fetch('test.json').then(res => res.json()).then(data => {
+    let data;
+
+    window.onload = async function () {
+        data = await fetch('test-data-2000.json').then(res => res.json())
+    }
+
+    function populateDOM() {
         for (let element of data) {
             let option = document.createElement('option');
             option.value = element.a;
             option.innerText = element.a;
             select.append(option);
         }
-    });
+    }
 </script>
 </html>

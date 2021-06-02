@@ -4,7 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlankBlazor", "BlankBlazor\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Any|Any CPU = Any|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{316AF2B8-DEA6-4555-9FDB-98307D9CF51E}.Any|Any CPU.ActiveCfg = Any|Any CPU
+		{316AF2B8-DEA6-4555-9FDB-98307D9CF51E}.Any|Any CPU.Build.0 = Any|Any CPU
 	EndGlobalSection
 EndGlobal
