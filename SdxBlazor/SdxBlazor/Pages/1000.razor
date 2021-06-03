@@ -5,7 +5,6 @@
 
 <SdxDropdown Data="Objects" Context="obj">
     <Label>Testlabel</Label>
-    <Placeholder>Dropdown Placeholder</Placeholder>
     <ItemTemplate>@obj.A</ItemTemplate>
 </SdxDropdown>
 
@@ -13,9 +12,9 @@
 {
     private TestObject[] Objects = new TestObject[0];
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override void OnInitialized()
     {
-        base.OnAfterRender(firstRender);
+        base.OnInitialized();
         LoadData();
     }
 
@@ -35,9 +34,8 @@
 
     private async void LoadData()
     {
-        Objects = await Http.GetFromJsonAsync<TestObject[]>("sample-data/test-data-1000.json");
-        // This is done so it is clear when Data is loaded and the Button can be pressed.
+        Objects = await Http.GetFromJsonAsync<TestObject[]>("sample-data/test-data-5000.json");
+    // This is done so it is clear when Data is loaded and the Button can be pressed.
         Console.WriteLine("Data loaded.");
     }
-
 }

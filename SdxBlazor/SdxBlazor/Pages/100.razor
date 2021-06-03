@@ -5,7 +5,6 @@
 
 <SdxDropdown Data="Objects" Context="obj">
     <Label>Testlabel</Label>
-    <Placeholder>Dropdown Placeholder</Placeholder>
     <ItemTemplate>@obj.A</ItemTemplate>
 </SdxDropdown>
 
@@ -13,9 +12,9 @@
 {
     private TestObject[] Objects = new TestObject[0];
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override void OnInitialized()
     {
-        base.OnAfterRender(firstRender);
+        base.OnInitialized();
         LoadData();
     }
 
