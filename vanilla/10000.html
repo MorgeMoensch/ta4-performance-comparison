@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla - Performance Comparison</title>
+</head>
+<body>
+<button onclick="populateDOM()">PopulateDOM</button>
+<select id="select">
+</select>
+</body>
+<script>
+    let select = document.getElementById('select');
+    let data;
+
+    window.onload = async function () {
+        data = await fetch('sample-data/test-data-10000.json').then(res => res.json())
+    }
+
+    function populateDOM() {
+        for (let element of data) {
+            let option = document.createElement('option');
+            option.value = element.a;
+            option.innerText = element.a;
+            select.appendChild(option);
+        }
+        console.log('DOM populated.')
+    }
+</script>
+</html>

@@ -14,7 +14,7 @@
     let data;
 
     window.onload = async function () {
-        data = await fetch('test-data-2000.json').then(res => res.json())
+        data = await fetch('sample-data/test-data-50.json').then(res => res.json())
     }
 
     function populateDOM() {
@@ -24,6 +24,7 @@
             option.innerText = element.a;
             select.appendChild(option);
         }
+        console.log('DOM populated.')
     }
 </script>
 </html>
