@@ -13,12 +13,12 @@
 {
     private TestObject[] Objects = new TestObject[0];
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override void OnInitialized()
     {
-        base.OnAfterRender(firstRender);
+        base.OnInitialized();
         LoadData();
     }
-
+    
     private async void LoadData()
     {
         Objects = await Http.GetFromJsonAsync<TestObject[]>("sample-data/test-data-10.json");

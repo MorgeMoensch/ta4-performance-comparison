@@ -1,4 +1,5 @@
 ﻿@page "/5000"
+@using System.Net
 @inject HttpClient Http
 
 <button @onclick="PopulateDOM">PopulateDOM</button>
@@ -13,9 +14,9 @@
 {
     private TestObject[] Objects = new TestObject[0];
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override void OnInitialized()
     {
-        base.OnAfterRender(firstRender);
+        base.OnInitialized();
         LoadData();
     }
 
@@ -25,7 +26,7 @@
         // This is done so it is clear when Data is loaded and the Button can be pressed.
         Console.WriteLine("Data loaded.");
     }
-
+    
 
     public class TestObject
     {
