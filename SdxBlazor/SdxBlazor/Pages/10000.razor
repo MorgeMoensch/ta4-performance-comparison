@@ -18,6 +18,12 @@
         base.OnInitialized();
         LoadData();
     }
+    
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        Console.WriteLine("After render.");
+    }
 
     public class TestObject
     {

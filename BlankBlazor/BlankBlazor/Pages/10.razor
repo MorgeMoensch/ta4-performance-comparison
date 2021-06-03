@@ -19,6 +19,12 @@
         LoadData();
     }
     
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        Console.WriteLine("After render.");
+    }
+    
     private async void LoadData()
     {
         Objects = await Http.GetFromJsonAsync<TestObject[]>("sample-data/test-data-10.json");
