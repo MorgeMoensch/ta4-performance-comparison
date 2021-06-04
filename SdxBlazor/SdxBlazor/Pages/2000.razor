@@ -1,0 +1,93 @@
+﻿@page "/2000"
+@inject HttpClient Http
+
+<button @onclick="PopulateDOM">PopulateDOM</button>
+
+<SdxDropdown Data="Objects" Context="obj">
+    <Label>Testlabel</Label>
+    <ItemTemplate>@obj.A</ItemTemplate>
+</SdxDropdown>
+
+@code
+{
+    private void OnPrimaryBindingColumnChanged(BindingColumnShortResponse newPrimaryBindingColumn)
+    {
+        _selectedPrimaryBindingColumn = newPrimaryBindingColumn;
+        TechnicalRule.PrimaryBindingColumn = newPrimaryBindingColumn;
+        _selectablePrimaryBindingColumns =
+            BindingColumnState.Value.Entities.Values.Where(bc => bc.Binding.Id == _selectedPrimaryBinding?.Id);
+        ;
+    }
+
+    public class BindingColumnShortResponse
+    {
+        public String Id;
+    }
+
+    public class Value
+    {
+        public Entities Entities;
+    }
+
+    public class Entities
+    {
+        public List<BindingColumnState> Values;
+    }
+
+    public class BindingColumnState
+    {
+        public static Value Value;
+        public Binding Binding;
+    }
+
+    public class Binding
+    {
+        public String Id;
+    }
+
+    public Binding _selectedPrimaryBinding;
+
+    public class TechnicalRules
+    {
+        public BindingColumnShortResponse PrimaryBindingColumn;
+    }
+
+    public BindingColumnShortResponse _selectedPrimaryBindingColumn;
+    public IEnumerable<BindingColumnState> _selectablePrimaryBindingColumns;
+    public TechnicalRules TechnicalRule;
+
+    private TestObject[] Objects = new TestObject[0];
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        LoadData();
+    }
+    
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        Console.WriteLine("After render.");
+    }
+
+    public class TestObject
+    {
+        public Guid Id { get; set; }
+
+        public string A { get; set; }
+
+        public string CreatedAt { get; set; }
+    }
+
+    private void PopulateDOM()
+    {
+        StateHasChanged();
+    }
+
+    private async void LoadData()
+    {
+        Objects = await Http.GetFromJsonAsync<TestObject[]>("sample-data/test-data-2000.json");
+    // This is done so it is clear when Data is loaded and the Button can be pressed.
+        Console.WriteLine("Data loaded.");
+    }
+}
